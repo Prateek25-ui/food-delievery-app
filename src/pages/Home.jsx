@@ -1,29 +1,34 @@
-import RestaurantCard from "../components/RestaurantCard";
-import restaurants from "../data/restaurants.js";
+  import RestaurantCard from "../components/RestaurantCard";
+  import restaurants from "../data/restaurants";
 
-function Home() {
-  return (
-    <div style={styles.container}>
-      {restaurants.map((res) => (
-        <RestaurantCard
-          key={res.id}
-          name={res.name}
-          cuisine={res.cuisine}
-          rating={res.rating}
-        />
-      ))}
-    </div>
-  );
-}
+  function Home({ addToCart }) {
 
-const styles = {
-  container: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-    gap: "20px",
-    padding: "40px",
-    width: "100%",
-  },
-};
+    return (
+      <div style={styles.container}>
 
-export default Home;
+        {restaurants.map((res) => (
+          <RestaurantCard
+            key={res.id}
+            id={res.id}
+            name={res.name}
+            cuisine={res.cuisine}
+            rating={res.rating}
+            price={res.price}
+            addToCart={addToCart}
+          />
+        ))}
+
+      </div>
+    );
+  }
+
+  const styles = {
+    container: {
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fit, minmax(220px,1fr))",
+      gap: "20px",
+      padding: "20px"
+    }
+  };
+
+  export default Home;

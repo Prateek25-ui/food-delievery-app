@@ -1,32 +1,48 @@
-function RestaurantCard({ name, cuisine, rating }) {
+import { toast } from "react-toastify";
+
+function RestaurantCard({ id, name, cuisine, rating, price, addToCart }) {
+
+  const handleAdd = () => {
+    addToCart({ id, name, cuisine, rating, price });
+    toast.success(name + " added to cart!");
+  };
+
   return (
     <div style={styles.card}>
+
       <h3>{name}</h3>
       <p>{cuisine}</p>
       <p>⭐ {rating}</p>
-      <button style={styles.button}>Add to Cart</button>
+      <p>₹{price}</p>
+
+      <button style={styles.button} onClick={handleAdd}>
+        Add to Cart
+      </button>
+
     </div>
   );
 }
 
 const styles = {
+
   card: {
-    backgroundColor: "white",
+    background: "white",
     padding: "20px",
-    borderRadius: "12px",
-    boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
-    transition: "transform 0.2s ease",
+    borderRadius: "10px",
+    boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
+    textAlign: "center"
   },
+
   button: {
     marginTop: "10px",
-    backgroundColor: "#ff6b6b",
+    padding: "10px 16px",
+    background: "#ff5200",
     color: "white",
     border: "none",
-    padding: "10px",
-    borderRadius: "6px",
-    cursor: "pointer",
-    width: "100%",
-  },
+    borderRadius: "8px",
+    fontWeight: "bold",
+    cursor: "pointer"
+  }
 };
 
 export default RestaurantCard;
