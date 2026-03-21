@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 
-function RestaurantCard({ id, name, cuisine, rating, price, addToCart }) {
+function RestaurantCard({ id, name, cuisine, rating, price, image, addToCart }) {
 
   const handleAdd = () => {
     addToCart({ id, name, cuisine, rating, price });
@@ -9,6 +9,7 @@ function RestaurantCard({ id, name, cuisine, rating, price, addToCart }) {
 
   return (
     <div style={styles.card}>
+      <img src={image} alt={name} style={styles.image} />
 
       <h3>{name}</h3>
       <p>{cuisine}</p>
@@ -18,30 +19,35 @@ function RestaurantCard({ id, name, cuisine, rating, price, addToCart }) {
       <button style={styles.button} onClick={handleAdd}>
         Add to Cart
       </button>
-
     </div>
   );
 }
 
 const styles = {
-
   card: {
     background: "white",
-    padding: "20px",
-    borderRadius: "10px",
-    boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
+    padding: "15px",
+    borderRadius: "12px",
+    boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
     textAlign: "center"
+  },
+
+  image: {
+    width: "100%",
+    height: "150px",
+    objectFit: "cover",
+    borderRadius: "10px"
   },
 
   button: {
     marginTop: "10px",
-    padding: "10px 16px",
+    padding: "10px",
     background: "#ff5200",
     color: "white",
     border: "none",
     borderRadius: "8px",
-    fontWeight: "bold",
-    cursor: "pointer"
+    cursor: "pointer",
+    fontWeight: "bold"
   }
 };
 
